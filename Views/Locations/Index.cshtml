@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SitemastersIT.Models.Location>
+
+<h2>Construction Site Locations</h2>
+<ul>
+    @foreach (var location in Model)
+    {
+        <li>@location.Name - @location.Address</li>
+    }
+</ul>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Add New Location</a>

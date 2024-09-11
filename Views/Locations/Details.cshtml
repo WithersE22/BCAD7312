@@ -1,0 +1,11 @@
+﻿@model SitemastersIT.Models.Location
+
+<h2>Location Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <p>@Model.Address</p>
+</div>
+
+<a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">Edit</a>
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>

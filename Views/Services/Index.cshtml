@@ -1,0 +1,9 @@
+﻿@model IEnumerable<SitemastersIT.Models.Service>
+
+<h2>Our Services and Fees</h2>
+<ul>
+    @foreach (var service in Model)
+    {
+        <li>@service.Name - @service.Fee</li>
+    }
+</ul>

@@ -1,0 +1,49 @@
+﻿<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: '@Url.Action("GetCalendarEvents")',
+        selectable: true,
+        dateClick: function(info) {
+            var title = prompt('Enter Event Title:');
+            var eventData;
+
+            if (title) {
+                eventData = {
+                    title: title,
+                    start: info.dateStr
+                };
+
+                // Get the antiforgery token from the hidden input
+                var token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+                // Post event to server
+                fetch('@Url.Action("AddEvent", "Calendar")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token  // Use the retrieved token
+                    },
+                    body: JSON.stringify(eventData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        calendar.addEvent(eventData);  // Add event to calendar on client side
+                    } else {
+                        alert('Failed to add event.');
+                    }
+                });
+            }
+        },
+        eventClick: function(info) {
+            alert('Event: ' + info.event.title);
+            // Add logic here to handle event click, such as displaying event details or editing the event
+        }
+    });
+
+    calendar.render();
+});
+</script>

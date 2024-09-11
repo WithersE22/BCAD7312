@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+    <PackageReference Include="Firebase.Auth" Version="1.0.0" />
+    <PackageReference Include="FirebaseAdmin" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Account\" />
+    <None Remove="Views\Locations\" />
+    <None Remove="Views\Services\" />
+    <None Remove="Views\Calendar\" />
+    <None Remove="Views\Gallary\" />
+    <None Remove="Views\Reviews\" />
+    <None Remove="Views\Payments\" />
+    <None Remove="Views\Skills\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Locations\" />
+    <Folder Include="Views\Services\" />
+    <Folder Include="Views\Calendar\" />
+    <Folder Include="Views\Gallary\" />
+    <Folder Include="Views\Reviews\" />
+    <Folder Include="Views\Payments\" />
+    <Folder Include="Views\Skills\" />
+  </ItemGroup>
+</Project>
